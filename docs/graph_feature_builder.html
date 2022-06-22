@@ -110,7 +110,7 @@
 <span id="graph-feature-builder"></span><h1>Graph Feature Builder<a class="headerlink" href="#module-giraffe.graph_feature_builder" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="giraffe.graph_feature_builder.GraphFeatureBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">giraffe.graph_feature_builder.</span></span><span class="sig-name descname"><span class="pre">GraphFeatureBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_feature_builder.html#GraphFeatureBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">giraffe.graph_feature_builder.</span></span><span class="sig-name descname"><span class="pre">GraphFeatureBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This is a class for building graph features. It supports the following features:</p>
 <ul class="simple">
@@ -264,7 +264,7 @@ will use default config value; otherwise, overwrite default one. The default val
 
 <dl class="py method">
 <dt class="sig sig-object py" id="giraffe.graph_feature_builder.GraphFeatureBuilder.raw2int">
-<span class="sig-name descname"><span class="pre">raw2int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_feature_builder.html#GraphFeatureBuilder.raw2int"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.raw2int" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">raw2int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.raw2int" title="Permalink to this definition"></a></dt>
 <dd><p>Return the internal integer id corresponding to the external integer id</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -281,7 +281,7 @@ will use default config value; otherwise, overwrite default one. The default val
 
 <dl class="py method">
 <dt class="sig sig-object py" id="giraffe.graph_feature_builder.GraphFeatureBuilder.int2raw">
-<span class="sig-name descname"><span class="pre">int2raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_feature_builder.html#GraphFeatureBuilder.int2raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.int2raw" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">int2raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.int2raw" title="Permalink to this definition"></a></dt>
 <dd><p>Return the external integer id corresponding to the internal integer id</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -298,7 +298,7 @@ will use default config value; otherwise, overwrite default one. The default val
 
 <dl class="py method">
 <dt class="sig sig-object py" id="giraffe.graph_feature_builder.GraphFeatureBuilder.build_graph">
-<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_feature_builder.html#GraphFeatureBuilder.build_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.build_graph" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.build_graph" title="Permalink to this definition"></a></dt>
 <dd><p>Read graph data and convert to <code class="docutils literal notranslate"><span class="pre">NetworKit.Graph</span></code> object, and obtain index mapping</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -312,7 +312,7 @@ is zero-indexed (starts from 0).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="giraffe.graph_feature_builder.GraphFeatureBuilder.add_edges">
-<span class="sig-name descname"><span class="pre">add_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_feature_builder.html#GraphFeatureBuilder.add_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.add_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.add_edges" title="Permalink to this definition"></a></dt>
 <dd><p>Add edges to the graph</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -323,14 +323,14 @@ is zero-indexed (starts from 0).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="giraffe.graph_feature_builder.GraphFeatureBuilder.remove_edges">
-<span class="sig-name descname"><span class="pre">remove_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_feature_builder.html#GraphFeatureBuilder.remove_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.remove_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.remove_edges" title="Permalink to this definition"></a></dt>
 <dd><p>Remove edges from the graph
 :param list edge_list: list of edges, represented by tuples of node id</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="giraffe.graph_feature_builder.GraphFeatureBuilder.update_graph">
-<span class="sig-name descname"><span class="pre">update_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_edge_list_delta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_feature_builder.html#GraphFeatureBuilder.update_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.update_graph" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">update_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_edge_list_delta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.update_graph" title="Permalink to this definition"></a></dt>
 <dd><p>Update graph by adding new edges and removing old edges specified in <code class="docutils literal notranslate"><span class="pre">df_edge_list_delta</span></code>, 
 which can be returned by calling the method <code class="docutils literal notranslate"><span class="pre">get_graph_delta_data</span></code> of 
 <a class="reference internal" href="graph_data_builder.html#giraffe.graph_data_builder.UniGraphDataBuilder" title="giraffe.graph_data_builder.UniGraphDataBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.UniGraphDataBuilder</span></code></a> or 
@@ -346,7 +346,7 @@ and a tag <code class="docutils literal notranslate"><span class="pre">is_new</s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="giraffe.graph_feature_builder.GraphFeatureBuilder.build_features">
-<span class="sig-name descname"><span class="pre">build_features</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_feature_builder.html#GraphFeatureBuilder.build_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.build_features" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">build_features</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_feature_builder.GraphFeatureBuilder.build_features" title="Permalink to this definition"></a></dt>
 <dd><p>Compute features</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
