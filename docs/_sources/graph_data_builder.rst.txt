@@ -1,0 +1,7 @@
+Graph Data Builder
+==================================
+
+.. automodule:: giraffe.graph_data_builder
+   :members:
+   :undoc-members:
+   :show-inheritance:

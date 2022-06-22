@@ -1,0 +1,7 @@
+Graph Feature Builder
+==================================
+
+.. automodule:: giraffe.graph_feature_builder
+   :members:
+   :undoc-members:
+   :show-inheritance:

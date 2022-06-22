@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backfilling &mdash; Giraffe 0.1.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CHANGELOG" href="changelog.html" />
+    <link rel="prev" title="Graph Feature Builder" href="graph_feature_builder.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Giraffe
+          </a>
+              <div class="version">
+                0.1.4
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_readme.html">Giraffe - A Tool for Graph Feature Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#communication">Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#releases-and-contributing">Releases and Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#the-team">The Team</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="graph_data_builder.html">Graph Data Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_feature_builder.html">Graph Feature Builder</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Backfilling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">CHANGELOG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-4">v0.1.4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#improvement">Improvement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-3">v0.1.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#new-feature">New Feature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id1">Improvement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-2">v0.1.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id2">New Feature</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-1">v0.1.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id3">New Feature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id4">Improvement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Giraffe</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Backfilling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/backfill.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-giraffe.backfill">
+<span id="backfilling"></span><h1>Backfilling<a class="headerlink" href="#module-giraffe.backfill" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="giraffe.backfill.BiBackfiller">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">giraffe.backfill.</span></span><span class="sig-name descname"><span class="pre">BiBackfiller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity_cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gd_builder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gf_builder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity_id_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/backfill.html#BiBackfiller"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.backfill.BiBackfiller" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is a class for backfilling graph-based features on bipartite graphs. The process of backfilling 
+is conducted in an on-the-fly fashion. Given a dataframe of entities to query graph features, 
+<code class="docutils literal notranslate"><span class="pre">df_query</span></code>, the backfiller iteratively builds graphs, computes features, and appends calculated features 
+to <code class="docutils literal notranslate"><span class="pre">df_query</span></code>. More specifically, the backfiller first calls graph data builder to construct a graph 
+based on data with time window <code class="docutils literal notranslate"><span class="pre">[start_date,</span> <span class="pre">start_date</span> <span class="pre">+</span> <span class="pre">window_size[</span></code>. Then, the backfiller calls 
+graph feature builder to compute features on the built graph. Once this is done, features are joined to 
+dataframe of query entities subject to the condition that the query entities must be within time window  
+<code class="docutils literal notranslate"><span class="pre">[start_date</span> <span class="pre">+</span> <span class="pre">window_size</span> <span class="pre">+</span> <span class="pre">gap_size</span> <span class="pre">-</span> <span class="pre">1,</span> <span class="pre">start_date</span> <span class="pre">+</span> <span class="pre">window_size</span> <span class="pre">+</span> <span class="pre">step_size</span> <span class="pre">+</span> <span class="pre">gap_size</span> <span class="pre">-</span> <span class="pre">1[</span></code>, 
+where <code class="docutils literal notranslate"><span class="pre">gap_size</span></code> indicates the number of days of delay for data. The backfiller then slides the window 
+and construct a second graph based on data with time window 
+<code class="docutils literal notranslate"><span class="pre">[start_date</span> <span class="pre">+</span> <span class="pre">step_size,</span> <span class="pre">start_date</span> <span class="pre">+</span> <span class="pre">window_size</span> <span class="pre">+</span> <span class="pre">step_size[</span></code>. The remaining process repeats as for 
+the first round of iteration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_date</strong> (<em>str</em>) – backfill start date (inclusive)</p></li>
+<li><p><strong>end_date</strong> (<em>str</em>) – backfill end date (exclusive)</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – size of time window in days</p></li>
+<li><p><strong>step_size</strong> (<em>int</em>) – step size in days</p></li>
+<li><p><strong>df_query</strong> (<em>DataFrame</em>) – contains columns of <code class="docutils literal notranslate"><span class="pre">entity_cols</span></code> as well <code class="docutils literal notranslate"><span class="pre">time_col</span></code></p></li>
+<li><p><strong>time_col</strong> (<em>str</em>) – name of time col in <code class="docutils literal notranslate"><span class="pre">df_query</span></code> for time selection</p></li>
+<li><p><strong>entity_cols</strong> (<em>list</em>) – col names in <code class="docutils literal notranslate"><span class="pre">df_query</span></code> of query entity</p></li>
+<li><p><strong>gd_builder</strong> – <code class="xref py py-class docutils literal notranslate"><span class="pre">BiGraphDataBuilder</span></code></p></li>
+<li><p><strong>gf_builder</strong> – <code class="xref py py-class docutils literal notranslate"><span class="pre">GraphFeatureBuilder</span></code></p></li>
+<li><p><strong>base_path</strong> (<em>str</em>) – base path for outputs</p></li>
+<li><p><strong>gap_size</strong> (<em>int</em>) – gap size in days, defaults to 1</p></li>
+<li><p><strong>entity_id_map</strong> (<em>DataFrame</em>) – produced by calling 
+<a class="reference internal" href="graph_data_builder.html#giraffe.graph_data_builder.BiGraphDataBuilder.get_entity_id_map_data" title="giraffe.graph_data_builder.BiGraphDataBuilder.get_entity_id_map_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.BiGraphDataBuilder.get_entity_id_map_data()</span></code></a>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – batch size for saving checkpoints, defaults to 10</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.backfill.BiBackfiller.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/backfill.html#BiBackfiller.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.backfill.BiBackfiller.run" title="Permalink to this definition"></a></dt>
+<dd><p>Run to start backfilling</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>backfilled graph features</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="graph_feature_builder.html" class="btn btn-neutral float-left" title="Graph Feature Builder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="CHANGELOG" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

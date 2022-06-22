@@ -1,0 +1,43 @@
+.. giraffe documentation master file, created by
+   sphinx-quickstart on Wed Dec 22 08:57:01 2021.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to Giraffe's documentation!
+============================================
+Giraffe |version|
+============================================
+
+Giraffe is a graph feature tool that provides the following features:
+
+* Efficient graph feature computation including PageRank, Katz, various centralities
+* Community detection methods such as Louvain
+* Facilities to create, filter, update time-aware graphs
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Quick Start
+
+   include_readme
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: API
+
+   graph_data_builder
+   graph_feature_builder
+   backfill
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Appendix
+
+   changelog
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

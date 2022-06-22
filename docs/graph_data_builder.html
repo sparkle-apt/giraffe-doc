@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graph Data Builder &mdash; Giraffe 0.1.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Graph Feature Builder" href="graph_feature_builder.html" />
+    <link rel="prev" title="Giraffe - A Tool for Graph Feature Generation" href="include_readme.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Giraffe
+          </a>
+              <div class="version">
+                0.1.4
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_readme.html">Giraffe - A Tool for Graph Feature Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#communication">Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#releases-and-contributing">Releases and Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#the-team">The Team</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Graph Data Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_feature_builder.html">Graph Feature Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backfill.html">Backfilling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">CHANGELOG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-4">v0.1.4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#improvement">Improvement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-3">v0.1.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#new-feature">New Feature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id1">Improvement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-2">v0.1.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id2">New Feature</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-1">v0.1.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id3">New Feature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#id4">Improvement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Giraffe</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Graph Data Builder</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/graph_data_builder.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-giraffe.graph_data_builder">
+<span id="graph-data-builder"></span><h1>Graph Data Builder<a class="headerlink" href="#module-giraffe.graph_data_builder" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BaseGraphDataBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">giraffe.graph_data_builder.</span></span><span class="sig-name descname"><span class="pre">BaseGraphDataBuilder</span></span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#BaseGraphDataBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.BaseGraphDataBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract base class to build graph data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BaseGraphDataBuilder.build_graph_data">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_graph_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#BaseGraphDataBuilder.build_graph_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.BaseGraphDataBuilder.build_graph_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BaseGraphDataBuilder.get_graph_delta_data">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_graph_delta_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#BaseGraphDataBuilder.get_graph_delta_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.BaseGraphDataBuilder.get_graph_delta_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BaseGraphDataBuilder.get_entity_id_map_data">
+<span class="sig-name descname"><span class="pre">get_entity_id_map_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#BaseGraphDataBuilder.get_entity_id_map_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.BaseGraphDataBuilder.get_entity_id_map_data" title="Permalink to this definition"></a></dt>
+<dd><p>Get the <code class="docutils literal notranslate"><span class="pre">entity_id_map</span></code> table that maps raw entity id to integer id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>entity_id_map table</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BaseGraphDataBuilder.write_features_to_database">
+<span class="sig-name descname"><span class="pre">write_features_to_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillna_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#BaseGraphDataBuilder.write_features_to_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.BaseGraphDataBuilder.write_features_to_database" title="Permalink to this definition"></a></dt>
+<dd><p>A utility function that writes computed graph features to database (Vega). It processes as follows:</p>
+<ol class="arabic simple">
+<li><p>Fill <code class="docutils literal notranslate"><span class="pre">NA</span></code> values with <code class="docutils literal notranslate"><span class="pre">fillna_val</span></code> (default -999);</p></li>
+<li><p>Write to database;</p></li>
+<li><p>Map entity integer id back to its raw id.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_features</strong> (<em>Pandas.DataFrame</em>) – computed graph features DataFrame that must contain the integer 
+entity id column named <code class="docutils literal notranslate"><span class="pre">node_id_int</span></code></p></li>
+<li><p><strong>output_table</strong> (<em>str</em>) – the name of the output table, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which case the output 
+table is named <code class="docutils literal notranslate"><span class="pre">'{schema}.{prefix}graph_features'</span></code></p></li>
+<li><p><strong>fillna_val</strong> (<em>float</em>) – fill <code class="docutils literal notranslate"><span class="pre">NA</span></code> with <code class="docutils literal notranslate"><span class="pre">fillna_val</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">-999</span></code></p></li>
+<li><p><strong>batch_n</strong> (<em>int</em>) – the number of batches the data would be split to when written to database, 
+defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.UniGraphDataBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">giraffe.graph_data_builder.</span></span><span class="sig-name descname"><span class="pre">UniGraphDataBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_entity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link_entities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ts_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">okta_username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity_id_map_tb_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vega'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#UniGraphDataBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.UniGraphDataBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#giraffe.graph_data_builder.BaseGraphDataBuilder" title="giraffe.graph_data_builder.BaseGraphDataBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.BaseGraphDataBuilder</span></code></a></p>
+<p>Class to build and retrieve graph data whose node is a single type of entity and whose relation is defined by 
+<code class="docutils literal notranslate"><span class="pre">link_entities</span></code>.</p>
+<p>For instance, suppose that we aim to build a graph where nodes correspond to users, and a 
+pair of users is connected if they share the same ip, or device. In this case, we need provide as input a 
+source table in which each row contains <code class="docutils literal notranslate"><span class="pre">&lt;user_id,</span> <span class="pre">ip,</span> <span class="pre">device_id,</span> <span class="pre">event_time&gt;</span></code> (<code class="docutils literal notranslate"><span class="pre">event_time</span></code> indicates 
+the time when a user used the corresponding device or ip, for example). Then, we set <code class="docutils literal notranslate"><span class="pre">node_entity</span></code> 
+to be <code class="docutils literal notranslate"><span class="pre">user_id</span></code>, <code class="docutils literal notranslate"><span class="pre">link_entities</span></code> to be <code class="docutils literal notranslate"><span class="pre">['ip',</span> <span class="pre">'device_id']</span></code>, instantiate the class, and call its methods 
+to obtain the desired graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_table</strong> (<em>str</em>) – name of souce table in database; it must contain columns specified in 
+<code class="docutils literal notranslate"><span class="pre">node_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">link_entities</span></code>, <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>.</p></li>
+<li><p><strong>node_entity</strong> (<em>str</em>) – name of entity considered as node</p></li>
+<li><p><strong>link_entities</strong> (<em>list</em>) – list of entities. A pair of <code class="docutils literal notranslate"><span class="pre">node_entity</span></code> 
+is connected if they share at least one entity in <code class="docutils literal notranslate"><span class="pre">link_entities</span></code></p></li>
+<li><p><strong>ts_col</strong> (<em>str</em>) – column name of timestamp when the link is effective; should have format 
+<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">hh:mm:ss</span></code></p></li>
+<li><p><strong>schema</strong> (<em>str</em>) – schema name, for instance, <code class="docutils literal notranslate"><span class="pre">sandbox_analytics_au</span></code></p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – prefix of the resulting table, for intance, <code class="docutils literal notranslate"><span class="pre">test_</span></code></p></li>
+<li><p><strong>okta_username</strong> (<em>str</em>) – okta username</p></li>
+<li><p><strong>entity_id_map_tb_name</strong> (<em>str</em>) – the name of the table that maps entity raw id to integer id; 
+defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>; if left default, the table is named 
+<code class="docutils literal notranslate"><span class="pre">'{schema}.{prefix}entity_id_map'</span></code></p></li>
+<li><p><strong>hotkey_th</strong> (<em>int</em>) – defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, no filtering hotkey if set to <code class="docutils literal notranslate"><span class="pre">None</span></code>; otherwise, filter hotkey if 
+occurrence greater than <code class="docutils literal notranslate"><span class="pre">hotkey_th</span></code></p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to print details, defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>cluster</strong> (<em>str</em>) – defaults to <code class="docutils literal notranslate"><span class="pre">vega</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.UniGraphDataBuilder.build_graph_data">
+<span class="sig-name descname"><span class="pre">build_graph_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#UniGraphDataBuilder.build_graph_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.UniGraphDataBuilder.build_graph_data" title="Permalink to this definition"></a></dt>
+<dd><p>Build graph data and create table in database</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_data">
+<span class="sig-name descname"><span class="pre">get_graph_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#UniGraphDataBuilder.get_graph_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_data" title="Permalink to this definition"></a></dt>
+<dd><p>Filter graph data within time range specified by <code class="docutils literal notranslate"><span class="pre">start_date</span></code> 
+and <code class="docutils literal notranslate"><span class="pre">end_date</span></code> and get graph data as Pandas.DataFrame from database. 
+If <code class="docutils literal notranslate"><span class="pre">start_date</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it indicates <em>unbounded preceding</em>. 
+If <code class="docutils literal notranslate"><span class="pre">end_date</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it indicates <em>unbounded following</em>.</p>
+<p>Attention: need first call <a class="reference internal" href="#giraffe.graph_data_builder.UniGraphDataBuilder.build_graph_data" title="giraffe.graph_data_builder.UniGraphDataBuilder.build_graph_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.UniGraphDataBuilder.build_graph_data()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_path</strong> (<em>str</em>) – the path to save the obtained graph data, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>; if left 
+default, the output path is set to be <code class="docutils literal notranslate"><span class="pre">./data/edge_list.txt</span></code></p></li>
+<li><p><strong>start_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>end_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to enforce a replacement of file even <code class="docutils literal notranslate"><span class="pre">output_path</span></code> exists file. 
+defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>hotkey_th</strong> (<em>int</em>) – defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, no filtering hotkey if set to <code class="docutils literal notranslate"><span class="pre">None</span></code>; otherwise, filter hotkey if 
+occurrence greater than <code class="docutils literal notranslate"><span class="pre">hotkey_th</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_delta_data">
+<span class="sig-name descname"><span class="pre">get_graph_delta_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#UniGraphDataBuilder.get_graph_delta_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_delta_data" title="Permalink to this definition"></a></dt>
+<dd><p>Get incremental part of graph data <code class="docutils literal notranslate"><span class="pre">[start_date,</span> <span class="pre">end_date[</span></code> with respect to 
+referece/base graph data <code class="docutils literal notranslate"><span class="pre">[ref_start_date,</span> <span class="pre">ref_end_date[</span></code>
+as Pandas.DataFrame from database.</p>
+<p>Attention: need first call <a class="reference internal" href="#giraffe.graph_data_builder.UniGraphDataBuilder.build_graph_data" title="giraffe.graph_data_builder.UniGraphDataBuilder.build_graph_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.UniGraphDataBuilder.build_graph_data()</span></code></a></p>
+<p>Only allow to use this function when graph data have overlap. In non-overlapping cases, 
+call <a class="reference internal" href="#giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_data" title="giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_data()</span></code></a> instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref_start_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>ref_end_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>start_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>end_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>hotkey_th</strong> (<em>int</em>) – defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, no filtering hotkey if set to <code class="docutils literal notranslate"><span class="pre">None</span></code>; otherwise, filter hotkey if 
+occurrence greater than <code class="docutils literal notranslate"><span class="pre">hotkey_th</span></code></p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to enforce a replacement of file even <code class="docutils literal notranslate"><span class="pre">output_path</span></code> exists</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>&lt;node_id_u, node_id_v, is_new&gt;, where <code class="docutils literal notranslate"><span class="pre">is_new</span> <span class="pre">==</span> <span class="pre">1</span></code> indicates new edges to add and edges to remove
+otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.UniGraphDataBuilder.get_entity_id_map_data">
+<span class="sig-name descname"><span class="pre">get_entity_id_map_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_data_builder.UniGraphDataBuilder.get_entity_id_map_data" title="Permalink to this definition"></a></dt>
+<dd><p>Get the <code class="docutils literal notranslate"><span class="pre">entity_id_map</span></code> table that maps raw entity id to integer id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>entity_id_map table</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.UniGraphDataBuilder.write_features_to_database">
+<span class="sig-name descname"><span class="pre">write_features_to_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillna_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_data_builder.UniGraphDataBuilder.write_features_to_database" title="Permalink to this definition"></a></dt>
+<dd><p>A utility function that writes computed graph features to database (Vega). It processes as follows:</p>
+<ol class="arabic simple">
+<li><p>Fill <code class="docutils literal notranslate"><span class="pre">NA</span></code> values with <code class="docutils literal notranslate"><span class="pre">fillna_val</span></code> (default -999);</p></li>
+<li><p>Write to database;</p></li>
+<li><p>Map entity integer id back to its raw id.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_features</strong> (<em>Pandas.DataFrame</em>) – computed graph features DataFrame that must contain the integer 
+entity id column named <code class="docutils literal notranslate"><span class="pre">node_id_int</span></code></p></li>
+<li><p><strong>output_table</strong> (<em>str</em>) – the name of the output table, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which case the output 
+table is named <code class="docutils literal notranslate"><span class="pre">'{schema}.{prefix}graph_features'</span></code></p></li>
+<li><p><strong>fillna_val</strong> (<em>float</em>) – fill <code class="docutils literal notranslate"><span class="pre">NA</span></code> with <code class="docutils literal notranslate"><span class="pre">fillna_val</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">-999</span></code></p></li>
+<li><p><strong>batch_n</strong> (<em>int</em>) – the number of batches the data would be split to when written to database, 
+defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BiGraphDataBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">giraffe.graph_data_builder.</span></span><span class="sig-name descname"><span class="pre">BiGraphDataBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left_entity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right_entity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ts_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">okta_username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity_id_map_tb_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vega'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#BiGraphDataBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.BiGraphDataBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#giraffe.graph_data_builder.BaseGraphDataBuilder" title="giraffe.graph_data_builder.BaseGraphDataBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.BaseGraphDataBuilder</span></code></a></p>
+<p>Class to build and retrieve bipartite graph data whose nodes are composed of two kinds of entities.</p>
+<p>For instance, suppose that we aim to build a graph where nodes correspond to users and used device, and a user 
+and a device are connected if the user has used the device. In this case, we need provide as input a 
+source table in which each row contains <code class="docutils literal notranslate"><span class="pre">&lt;user_id,</span> <span class="pre">device_id,</span> <span class="pre">event_time&gt;</span></code> (<code class="docutils literal notranslate"><span class="pre">event_time</span></code> indicates 
+the time when a user used the corresponding device, for example). Then, we set <code class="docutils literal notranslate"><span class="pre">left_entity</span></code> 
+to be <code class="docutils literal notranslate"><span class="pre">user_id</span></code>, <code class="docutils literal notranslate"><span class="pre">right_entity</span></code> to be <code class="docutils literal notranslate"><span class="pre">device_id</span></code>, instantiate the class, and call its methods 
+to obtain the desired graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_table</strong> (<em>str</em>) – name of souce table in database; it must contain columns specified in 
+<code class="docutils literal notranslate"><span class="pre">left_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">right_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>.</p></li>
+<li><p><strong>left_entity</strong> (<em>str</em>) – name of entity considered as left node</p></li>
+<li><p><strong>right_entity</strong> (<em>str</em>) – name of entity considered as right node</p></li>
+<li><p><strong>ts_col</strong> (<em>str</em>) – column name of timestamp when the link is effective; should have format 
+<code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">hh:mm:ss</span></code></p></li>
+<li><p><strong>schema</strong> (<em>str</em>) – schema name, for instance, <code class="docutils literal notranslate"><span class="pre">sandbox_analytics_au</span></code></p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – prefix of the resulting table, for intance, <code class="docutils literal notranslate"><span class="pre">test_</span></code></p></li>
+<li><p><strong>okta_username</strong> (<em>str</em>) – okta username</p></li>
+<li><p><strong>entity_id_map_tb_name</strong> (<em>str</em>) – the name of the table that maps entity raw id to integer id; 
+defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>; if left default, the table is named 
+<code class="docutils literal notranslate"><span class="pre">'{schema}.{prefix}entity_id_map'</span></code></p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to print details, defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>cluster</strong> (<em>str</em>) – defaults to <code class="docutils literal notranslate"><span class="pre">vega</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BiGraphDataBuilder.build_graph_data">
+<span class="sig-name descname"><span class="pre">build_graph_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#BiGraphDataBuilder.build_graph_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.BiGraphDataBuilder.build_graph_data" title="Permalink to this definition"></a></dt>
+<dd><p>Build graph data and create table in database</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BiGraphDataBuilder.get_entity_id_map_data">
+<span class="sig-name descname"><span class="pre">get_entity_id_map_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_data_builder.BiGraphDataBuilder.get_entity_id_map_data" title="Permalink to this definition"></a></dt>
+<dd><p>Get the <code class="docutils literal notranslate"><span class="pre">entity_id_map</span></code> table that maps raw entity id to integer id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>entity_id_map table</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BiGraphDataBuilder.get_graph_data">
+<span class="sig-name descname"><span class="pre">get_graph_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#BiGraphDataBuilder.get_graph_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.BiGraphDataBuilder.get_graph_data" title="Permalink to this definition"></a></dt>
+<dd><p>Filter graph data within time range specified by <code class="docutils literal notranslate"><span class="pre">start_date</span></code> 
+and <code class="docutils literal notranslate"><span class="pre">end_date</span></code> and get graph data as Pandas.DataFrame from database. 
+If <code class="docutils literal notranslate"><span class="pre">start_date</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it indicates <em>unbounded preceding</em>. 
+If <code class="docutils literal notranslate"><span class="pre">end_date</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it indicates <em>unbounded following</em>.</p>
+<p>Attention: need first call <a class="reference internal" href="#giraffe.graph_data_builder.BiGraphDataBuilder.build_graph_data" title="giraffe.graph_data_builder.BiGraphDataBuilder.build_graph_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.BiGraphDataBuilder.build_graph_data()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_path</strong> (<em>str</em>) – the path to save the obtained graph data, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>; if left 
+default, the output path is set to be <code class="docutils literal notranslate"><span class="pre">./data/edge_list.txt</span></code></p></li>
+<li><p><strong>start_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>end_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to enforce a replacement of file even <code class="docutils literal notranslate"><span class="pre">output_path</span></code> exists file. 
+defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BiGraphDataBuilder.write_features_to_database">
+<span class="sig-name descname"><span class="pre">write_features_to_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillna_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#giraffe.graph_data_builder.BiGraphDataBuilder.write_features_to_database" title="Permalink to this definition"></a></dt>
+<dd><p>A utility function that writes computed graph features to database (Vega). It processes as follows:</p>
+<ol class="arabic simple">
+<li><p>Fill <code class="docutils literal notranslate"><span class="pre">NA</span></code> values with <code class="docutils literal notranslate"><span class="pre">fillna_val</span></code> (default -999);</p></li>
+<li><p>Write to database;</p></li>
+<li><p>Map entity integer id back to its raw id.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_features</strong> (<em>Pandas.DataFrame</em>) – computed graph features DataFrame that must contain the integer 
+entity id column named <code class="docutils literal notranslate"><span class="pre">node_id_int</span></code></p></li>
+<li><p><strong>output_table</strong> (<em>str</em>) – the name of the output table, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which case the output 
+table is named <code class="docutils literal notranslate"><span class="pre">'{schema}.{prefix}graph_features'</span></code></p></li>
+<li><p><strong>fillna_val</strong> (<em>float</em>) – fill <code class="docutils literal notranslate"><span class="pre">NA</span></code> with <code class="docutils literal notranslate"><span class="pre">fillna_val</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">-999</span></code></p></li>
+<li><p><strong>batch_n</strong> (<em>int</em>) – the number of batches the data would be split to when written to database, 
+defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="giraffe.graph_data_builder.BiGraphDataBuilder.get_graph_delta_data">
+<span class="sig-name descname"><span class="pre">get_graph_delta_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/giraffe/graph_data_builder.html#BiGraphDataBuilder.get_graph_delta_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#giraffe.graph_data_builder.BiGraphDataBuilder.get_graph_delta_data" title="Permalink to this definition"></a></dt>
+<dd><p>Get incremental part of graph data <code class="docutils literal notranslate"><span class="pre">[start_date,</span> <span class="pre">end_date[</span></code> with respect to 
+referece/base graph data <code class="docutils literal notranslate"><span class="pre">[ref_start_date,</span> <span class="pre">ref_end_date[</span></code>
+as Pandas.DataFrame from database.</p>
+<p>Attention: need first call <a class="reference internal" href="#giraffe.graph_data_builder.BiGraphDataBuilder.build_graph_data" title="giraffe.graph_data_builder.BiGraphDataBuilder.build_graph_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.BiGraphDataBuilder.build_graph_data()</span></code></a></p>
+<p>Only allow to use this function when graph data have overlap. In non-overlapping cases, 
+call <a class="reference internal" href="#giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_data" title="giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">giraffe.graph_data_builder.UniGraphDataBuilder.get_graph_data()</span></code></a> instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref_start_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>ref_end_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>start_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>end_date</strong> (<em>str</em>) – should conform to the same format as <code class="docutils literal notranslate"><span class="pre">ts_col</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to enforce a replacement of file even <code class="docutils literal notranslate"><span class="pre">output_path</span></code> exists</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>&lt;node_id_u, node_id_v, is_new&gt;, where <code class="docutils literal notranslate"><span class="pre">is_new</span> <span class="pre">==</span> <span class="pre">1</span></code> indicates new edges to add and edges to remove
+otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="include_readme.html" class="btn btn-neutral float-left" title="Giraffe - A Tool for Graph Feature Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="graph_feature_builder.html" class="btn btn-neutral float-right" title="Graph Feature Builder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>giraffe.graph_feature_builder &mdash; Giraffe 0.1.4 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Giraffe
+          </a>
+              <div class="version">
+                0.1.4
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../include_readme.html">Giraffe - A Tool for Graph Feature Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../include_readme.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../include_readme.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../include_readme.html#communication">Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../include_readme.html#releases-and-contributing">Releases and Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../include_readme.html#the-team">The Team</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../graph_data_builder.html">Graph Data Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graph_feature_builder.html">Graph Feature Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../backfill.html">Backfilling</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">CHANGELOG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-4">v0.1.4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog.html#improvement">Improvement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-3">v0.1.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog.html#new-feature">New Feature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog.html#id1">Improvement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-2">v0.1.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog.html#id2">New Feature</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-1">v0.1.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog.html#id3">New Feature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog.html#id4">Improvement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Giraffe</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>giraffe.graph_feature_builder</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for giraffe.graph_feature_builder</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>  
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">networkit</span> <span class="k">as</span> <span class="nn">nk</span>
+
+<span class="kn">from</span> <span class="nn">afterpay_gdp_interfaces</span> <span class="kn">import</span> <span class="n">RedshiftHook</span>
+
+<span class="kn">from</span> <span class="nn">.utils.sql_utils</span> <span class="kn">import</span> <span class="n">sql_from_str</span><span class="p">,</span> <span class="n">sql_from_file</span><span class="p">,</span> <span class="n">get_table_stats</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">feature_wrapper</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;sparkle&#39;</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;giraffe.graph_feature_builder&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">_IndexMapper</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Help to organize id mapping</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw2int_map</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param dict raw2int_map: raw id to int id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="n">raw2int_map</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_int_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">raw2int_map</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_int_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">int2raw_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    
+    <span class="k">def</span> <span class="nf">raw2int</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_id</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span><span class="p">[</span><span class="n">raw_id</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="k">raise</span>
+    
+    <span class="k">def</span> <span class="nf">int2raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">int_id</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">int2raw_map</span><span class="p">[</span><span class="n">int_id</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="k">raise</span>
+            
+    <span class="k">def</span> <span class="nf">add_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_id</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">raw_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_int_id</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span><span class="p">[</span><span class="n">raw_id</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_int_id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">int2raw_map</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">max_int_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">raw_id</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Ignore adding item since </span><span class="si">{}</span><span class="s1"> already exists&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">raw_id</span><span class="p">))</span>
+            
+    <span class="k">def</span> <span class="nf">remove_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_id</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">raw_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span><span class="p">:</span>
+            <span class="n">int_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span><span class="p">[</span><span class="n">raw_id</span><span class="p">]</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw2int_map</span><span class="p">[</span><span class="n">raw_id</span><span class="p">]</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">int2raw_map</span><span class="p">[</span><span class="n">int_id</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Ignore removing item since </span><span class="si">{}</span><span class="s1"> does not exist&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">raw_id</span><span class="p">))</span>
+            
+<div class="viewcode-block" id="GraphFeatureBuilder"><a class="viewcode-back" href="../../graph_feature_builder.html#giraffe.graph_feature_builder.GraphFeatureBuilder">[docs]</a><span class="k">class</span> <span class="nc">GraphFeatureBuilder</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is a class for building graph features. It supports the following features:</span>
+<span class="sd">    </span>
+<span class="sd">    * pagerank: PageRank</span>
+<span class="sd">    * approx_betweenness: approximate betweenness based on path sampling</span>
+<span class="sd">    * est_betweenness: estimate betweenness, perform better in practice than approx_betweenness (Sanders, Geisberger, Schultes: Better Approximation of Betweenness Centrality)</span>
+<span class="sd">    * degree: degree centrality</span>
+<span class="sd">    * approx_closeness: approximate closeness (Cohen et al., Computing Classic Closeness Centrality, at Scale)</span>
+<span class="sd">    * harmon_closeness: harmonic closeness, suitable for unconnected graphs</span>
+<span class="sd">    * katz: Katz centrality</span>
+<span class="sd">    * clustering_coef: local clustering coefficient</span>
+<span class="sd">    * louvain: community detection algorithm Louvain</span>
+<span class="sd">    * kcore: K core algorithm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param list features: only accepts values from </span>
+<span class="sd">        </span>
+<span class="sd">            .. code-block:: python</span>
+<span class="sd">                </span>
+<span class="sd">                [</span>
+<span class="sd">                    &#39;pagerank&#39;,</span>
+<span class="sd">                    &#39;approx_betweenness&#39;,</span>
+<span class="sd">                    &#39;est_betweenness&#39;,</span>
+<span class="sd">                    &#39;degree&#39;,</span>
+<span class="sd">                    &#39;approx_closeness&#39;,</span>
+<span class="sd">                    &#39;harmon_closeness&#39;,</span>
+<span class="sd">                    &#39;katz&#39;,</span>
+<span class="sd">                    &#39;clustering_coef&#39;,</span>
+<span class="sd">                    &#39;louvain&#39;,</span>
+<span class="sd">                    &#39;kcore&#39;</span>
+<span class="sd">                ]</span>
+<span class="sd">            </span>
+<span class="sd">            defaults to ``None``; if ``features=None``, then compute all supported features</span>
+<span class="sd">        :param dict config: defaults to ``None``; if config for some feature not provided, </span>
+<span class="sd">            will use default config value; otherwise, overwrite default one. The default value is </span>
+<span class="sd">            </span>
+<span class="sd">            .. code-block:: python</span>
+<span class="sd">            </span>
+<span class="sd">                {</span>
+<span class="sd">                    &#39;pagerank&#39;: {</span>
+<span class="sd">                        &#39;kwargs&#39;: {&#39;damp&#39;: 0.85, &#39;tol&#39;: 1e-9}</span>
+<span class="sd">                    },</span>
+<span class="sd">                    &#39;approx_betweenness&#39;: {</span>
+<span class="sd">                        &#39;kwargs&#39;: {&#39;epsilon&#39;: 0.01, &#39;delta&#39;: 0.1, &#39;universalConstant&#39;: 1.0}</span>
+<span class="sd">                    },</span>
+<span class="sd">                    &#39;est_betweenness&#39;: {</span>
+<span class="sd">                        &#39;args&#39;: [500],</span>
+<span class="sd">                        &#39;kwargs&#39;: {&#39;normalized&#39;: True, &#39;parallel&#39;: True}</span>
+<span class="sd">                    },</span>
+<span class="sd">                    &#39;degree&#39;: {</span>
+<span class="sd">                        &#39;kwargs&#39;: {&#39;normalized&#39;: False, &#39;outDeg&#39;: True, &#39;ignoreSelfLoops&#39;: True}</span>
+<span class="sd">                    },</span>
+<span class="sd">                    &#39;approx_closeness&#39;: {</span>
+<span class="sd">                        &#39;args&#39;: [1000],</span>
+<span class="sd">                        &#39;kwargs&#39;: {&#39;epsilon&#39;: 0.1, &#39;normalized&#39;: True, &#39;type&#39;: 2}</span>
+<span class="sd">                    },</span>
+<span class="sd">                    &#39;harmon_closeness&#39;: {</span>
+<span class="sd">                        &#39;kwargs&#39;: {&#39;normalized&#39;: True}</span>
+<span class="sd">                    },</span>
+<span class="sd">                    &#39;katz&#39;: {</span>
+<span class="sd">                        &#39;kwargs&#39;: {&#39;alpha&#39;: 5e-4, &#39;beta&#39;: 0.1, &#39;tol&#39;: 1e-8}</span>
+<span class="sd">                    },</span>
+<span class="sd">                    &#39;clustering_coef&#39;: {</span>
+<span class="sd">                        &#39;kwargs&#39;: {&#39;turbo&#39;: False} # &#39;normalized&#39;: True, </span>
+<span class="sd">                    },</span>
+<span class="sd">                    &#39;louvain&#39;: {</span>
+<span class="sd">                        &#39;kwargs&#39;: {</span>
+<span class="sd">                            &#39;refine&#39;: False,</span>
+<span class="sd">                            &#39;gamma&#39;: 0.1,</span>
+<span class="sd">                            # &#39;par&#39;: &#39;balance&#39;,</span>
+<span class="sd">                            &#39;maxIter&#39;: 32,</span>
+<span class="sd">                            &#39;turbo&#39;: True,</span>
+<span class="sd">                            &#39;recurse&#39;: True,</span>
+<span class="sd">                        }</span>
+<span class="sd">                    },</span>
+<span class="sd">                    &#39;kcore&#39;: {}</span>
+<span class="sd">                }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">__g</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__edge_list_reader</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span> <span class="o">=</span> <span class="kc">None</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">__default_config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;pagerank&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;damp&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s1">&#39;tol&#39;</span><span class="p">:</span> <span class="mf">1e-9</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;approx_betweenness&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;epsilon&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;delta&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;universalConstant&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;est_betweenness&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">500</span><span class="p">],</span>
+                <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;normalized&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;parallel&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;degree&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;normalized&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;outDeg&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;ignoreSelfLoops&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;approx_closeness&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">],</span>
+                <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;epsilon&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;normalized&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;harmon_closeness&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;normalized&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;katz&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">5e-4</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;tol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;clustering_coef&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;turbo&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span> <span class="c1"># &#39;normalized&#39;: True, </span>
+            <span class="p">},</span>
+            <span class="s1">&#39;louvain&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;refine&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="c1"># &#39;par&#39;: &#39;balance&#39;,</span>
+                    <span class="s1">&#39;maxIter&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+                    <span class="s1">&#39;turbo&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;recurse&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;kcore&#39;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">__name2func</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;pagerank&#39;</span><span class="p">:</span> <span class="n">nk</span><span class="o">.</span><span class="n">centrality</span><span class="o">.</span><span class="n">PageRank</span><span class="p">,</span>
+            <span class="s1">&#39;approx_betweenness&#39;</span><span class="p">:</span> <span class="n">nk</span><span class="o">.</span><span class="n">centrality</span><span class="o">.</span><span class="n">ApproxBetweenness</span><span class="p">,</span> <span class="c1"># slow</span>
+            <span class="s1">&#39;est_betweenness&#39;</span><span class="p">:</span> <span class="n">nk</span><span class="o">.</span><span class="n">centrality</span><span class="o">.</span><span class="n">EstimateBetweenness</span><span class="p">,</span> <span class="c1"># slow</span>
+            <span class="s1">&#39;degree&#39;</span><span class="p">:</span> <span class="n">nk</span><span class="o">.</span><span class="n">centrality</span><span class="o">.</span><span class="n">DegreeCentrality</span><span class="p">,</span> 
+            <span class="s1">&#39;approx_closeness&#39;</span><span class="p">:</span> <span class="n">nk</span><span class="o">.</span><span class="n">centrality</span><span class="o">.</span><span class="n">ApproxCloseness</span><span class="p">,</span> <span class="c1"># slow</span>
+            <span class="s1">&#39;harmon_closeness&#39;</span><span class="p">:</span> <span class="n">nk</span><span class="o">.</span><span class="n">centrality</span><span class="o">.</span><span class="n">HarmonicCloseness</span><span class="p">,</span> <span class="c1"># very slow</span>
+            <span class="s1">&#39;katz&#39;</span><span class="p">:</span> <span class="n">nk</span><span class="o">.</span><span class="n">centrality</span><span class="o">.</span><span class="n">KatzCentrality</span><span class="p">,</span>
+            <span class="s1">&#39;clustering_coef&#39;</span><span class="p">:</span> <span class="n">nk</span><span class="o">.</span><span class="n">centrality</span><span class="o">.</span><span class="n">LocalClusteringCoefficient</span><span class="p">,</span>
+            <span class="s1">&#39;louvain&#39;</span><span class="p">:</span> <span class="n">feature_wrapper</span><span class="o">.</span><span class="n">LouvainWrapper</span><span class="p">,</span>
+            <span class="s1">&#39;kcore&#39;</span><span class="p">:</span> <span class="n">feature_wrapper</span><span class="o">.</span><span class="n">KCoreWrapper</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__default_features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__default_config</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">__assert_features</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__assert_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__default_features</span> <span class="k">if</span> <span class="n">features</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">__config</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">__default_config</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__features</span><span class="p">}</span>
+        <span class="c1"># update config</span>
+        <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">,</span> <span class="s1">&#39;kwargs&#39;</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">[</span><span class="n">f</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">__assert_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assert if ``features`` supported</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">features</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__default_config</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> not supported!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">__assert_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assert if ``config`` conforms to required format</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__default_config</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> not supported!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return configuration used to compute features.</span>
+<span class="sd">        </span>
+<span class="sd">        :return: configuration</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__config</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return underlying built graph</span>
+<span class="sd">        </span>
+<span class="sd">        :return: underlying built graph</span>
+<span class="sd">        :rtype: networkit.Graph</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__g</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">edge_list_reader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return edge list reader</span>
+<span class="sd">        </span>
+<span class="sd">        :return: edge list reader</span>
+<span class="sd">        :rtype: networkit.graphio.EdgeListReader</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__edge_list_reader</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw2int_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the mapping that maps external input integer id to contiguous internal integer id</span>
+<span class="sd">        </span>
+<span class="sd">        :return: mapping</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">raw2int_map</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">int2raw_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the mapping that maps contiguous internal input integer id to external integer id</span>
+<span class="sd">        </span>
+<span class="sd">        :return: mapping</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">int2raw_map</span>
+    
+<div class="viewcode-block" id="GraphFeatureBuilder.raw2int"><a class="viewcode-back" href="../../graph_feature_builder.html#giraffe.graph_feature_builder.GraphFeatureBuilder.raw2int">[docs]</a>    <span class="k">def</span> <span class="nf">raw2int</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the internal integer id corresponding to the external integer id</span>
+<span class="sd">        </span>
+<span class="sd">        :param int raw_id: external integer id</span>
+<span class="sd">        </span>
+<span class="sd">        :return: internal integer id</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">raw2int</span><span class="p">(</span><span class="n">raw_id</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="GraphFeatureBuilder.int2raw"><a class="viewcode-back" href="../../graph_feature_builder.html#giraffe.graph_feature_builder.GraphFeatureBuilder.int2raw">[docs]</a>    <span class="k">def</span> <span class="nf">int2raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">int_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the external integer id corresponding to the internal integer id</span>
+<span class="sd">        </span>
+<span class="sd">        :param int int_id: internal integer id</span>
+<span class="sd">        </span>
+<span class="sd">        :return: external integer id</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">int2raw</span><span class="p">(</span><span class="n">int_id</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="GraphFeatureBuilder.build_graph"><a class="viewcode-back" href="../../graph_feature_builder.html#giraffe.graph_feature_builder.GraphFeatureBuilder.build_graph">[docs]</a>    <span class="k">def</span> <span class="nf">build_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read graph data and convert to ``NetworKit.Graph`` object, and obtain index mapping</span>
+<span class="sd">        </span>
+<span class="sd">        :param str input_path: input path of EdgeList file</span>
+<span class="sd">            The EdgeList file format is a simple format that stores each node’s adjacency array </span>
+<span class="sd">            in a seperate line. A pair of node that connect is separated by tab ``\\t``. Node&#39;s ID </span>
+<span class="sd">            is zero-indexed (starts from 0). </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Start building graph&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__edge_list_reader</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">graphio</span><span class="o">.</span><span class="n">EdgeListReader</span><span class="p">(</span>
+            <span class="n">separator</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">firstNode</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">commentPrefix</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">continuous</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__edge_list_reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
+        
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Building mapping from original node id to internal id&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># Get mapping from node ids in nxG to node ids in G</span>
+        <span class="c1"># self.__node_id2int = dict(</span>
+        <span class="c1">#     (int(raw_id), id_int) for raw_id, id_int in self.__edge_list_reader.getNodeMap().items()</span>
+        <span class="c1"># )</span>
+        <span class="c1"># self.__int2node_id = {v:k for k,v in self.__node_id2int.items()}</span>
+        <span class="n">raw2int_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">raw_id</span><span class="p">),</span> <span class="n">id_int</span><span class="p">)</span> <span class="k">for</span> <span class="n">raw_id</span><span class="p">,</span> <span class="n">id_int</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__edge_list_reader</span><span class="o">.</span><span class="n">getNodeMap</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span> <span class="o">=</span> <span class="n">_IndexMapper</span><span class="p">(</span><span class="n">raw2int_map</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Finished building graph&#39;</span><span class="p">)</span>    
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">nk</span><span class="o">.</span><span class="n">overview</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="p">))</span></div>
+        
+<div class="viewcode-block" id="GraphFeatureBuilder.add_edges"><a class="viewcode-back" href="../../graph_feature_builder.html#giraffe.graph_feature_builder.GraphFeatureBuilder.add_edges">[docs]</a>    <span class="k">def</span> <span class="nf">add_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add edges to the graph</span>
+<span class="sd">        </span>
+<span class="sd">        :param list edge_list: list of edges, represented by tuples of node id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edge_list</span><span class="p">:</span>
+            <span class="c1"># add node if not exist</span>
+            <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">raw2int_map</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="o">.</span><span class="n">addNode</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">raw2int_map</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="o">.</span><span class="n">addNode</span><span class="p">()</span>
+            
+            <span class="c1"># add edge</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">raw2int</span><span class="p">(</span><span class="n">u</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">raw2int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="p">)</span></div>
+            
+<div class="viewcode-block" id="GraphFeatureBuilder.remove_edges"><a class="viewcode-back" href="../../graph_feature_builder.html#giraffe.graph_feature_builder.GraphFeatureBuilder.remove_edges">[docs]</a>    <span class="k">def</span> <span class="nf">remove_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove edges from the graph</span>
+<span class="sd">        :param list edge_list: list of edges, represented by tuples of node id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edge_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="o">.</span><span class="n">removeEdge</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">raw2int</span><span class="p">(</span><span class="n">u</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">raw2int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="p">)</span></div>
+            
+<div class="viewcode-block" id="GraphFeatureBuilder.update_graph"><a class="viewcode-back" href="../../graph_feature_builder.html#giraffe.graph_feature_builder.GraphFeatureBuilder.update_graph">[docs]</a>    <span class="k">def</span> <span class="nf">update_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df_edge_list_delta</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update graph by adding new edges and removing old edges specified in ``df_edge_list_delta``, </span>
+<span class="sd">        which can be returned by calling the method ``get_graph_delta_data`` of </span>
+<span class="sd">        :py:class:`giraffe.graph_data_builder.UniGraphDataBuilder` or </span>
+<span class="sd">        :py:class:`giraffe.graph_data_builder.BiGraphDataBuilder`</span>
+<span class="sd">        </span>
+<span class="sd">        :param DataFrame df_edge_list_delta:  contain ``&lt;node_id_u, node_id_v, is_new&gt;``, </span>
+<span class="sd">            represented by tuples of raw id of node, </span>
+<span class="sd">            and a tag ``is_new``, indicating whether to add (``is_new = 1``) or remove (``is_new = 0``)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># update edges</span>
+        <span class="n">edge_list_add</span> <span class="o">=</span> <span class="n">df_edge_list_delta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_edge_list_delta</span><span class="o">.</span><span class="n">is_new</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;node_id_u&#39;</span><span class="p">,</span> <span class="s1">&#39;node_id_v&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">edge_list_rm</span> <span class="o">=</span> <span class="n">df_edge_list_delta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_edge_list_delta</span><span class="o">.</span><span class="n">is_new</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;node_id_u&#39;</span><span class="p">,</span> <span class="s1">&#39;node_id_v&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Start adding #</span><span class="si">{}</span><span class="s1"> edges&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge_list_add</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_edges</span><span class="p">(</span><span class="n">edge_list_add</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;End adding edges&#39;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Start removing #</span><span class="si">{}</span><span class="s1"> edges&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge_list_rm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">remove_edges</span><span class="p">(</span><span class="n">edge_list_rm</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;End removing edges&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># remove isolated nodes and remap node index</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Start removing isolated nodes and remapping node indices&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">nd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="o">.</span><span class="n">iterNodes</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="o">.</span><span class="n">isIsolated</span><span class="p">(</span><span class="n">nd</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="o">.</span><span class="n">removeNode</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>
+
+        <span class="n">prev_cur_map</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">graphtools</span><span class="o">.</span><span class="n">getContinuousNodeIds</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="p">)</span>
+        <span class="n">prev_raw2int_map</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span><span class="o">.</span><span class="n">raw2int_map</span>
+        <span class="n">raw2int_map</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">raw_id</span><span class="p">:</span><span class="n">prev_cur_map</span><span class="p">[</span><span class="n">prev_int_id</span><span class="p">]</span> <span class="k">for</span> <span class="n">raw_id</span><span class="p">,</span> <span class="n">prev_int_id</span> <span class="ow">in</span> <span class="n">prev_raw2int_map</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> \
+                <span class="k">if</span> <span class="n">prev_int_id</span> <span class="ow">in</span> <span class="n">prev_cur_map</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__index_mapper</span> <span class="o">=</span> <span class="n">_IndexMapper</span><span class="p">(</span><span class="n">raw2int_map</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__g</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">graphtools</span><span class="o">.</span><span class="n">getCompactedGraph</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="p">,</span> <span class="n">prev_cur_map</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;End removing isolated nodes and remapping node indices&#39;</span><span class="p">)</span></div>
+    
+    <span class="k">def</span> <span class="nf">__get_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;args&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> not supported&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">__get_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;kwargs&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> not supported&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">__build_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name2func</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Building feature </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name2func</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_args</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_kwargs</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">feature</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">feature</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">scores</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">res</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> not supported&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+            
+<div class="viewcode-block" id="GraphFeatureBuilder.build_features"><a class="viewcode-back" href="../../graph_feature_builder.html#giraffe.graph_feature_builder.GraphFeatureBuilder.build_features">[docs]</a>    <span class="k">def</span> <span class="nf">build_features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute features</span>
+<span class="sd">        </span>
+<span class="sd">        :return: computed features</span>
+<span class="sd">        :rtype: Pandas.DataFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">__g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Call self.build_graph before building features&#39;</span>
+        
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Start building features </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__features</span><span class="p">)))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Using config:</span><span class="se">\n</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">))</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__features</span><span class="p">:</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_feature</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="c1"># map back to node_id_int (raw)</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;node_id_int&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">int2raw</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span> <span class="k">for</span> <span class="n">nd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__g</span><span class="o">.</span><span class="n">iterNodes</span><span class="p">())</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Finished building features&#39;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">df</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
